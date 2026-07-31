@@ -1,0 +1,118 @@
+/* src/index.css */
+
+/* ---- Design tokens ---- */
+:root {
+  /* Colors */
+  --neutral-0: #fcfbf8;
+  --neutral-50: #f4efe3;
+  --neutral-100: #e9dfcc;
+  --neutral-200: #d7c7a6;
+  --neutral-300: #b9a372;
+  --neutral-400: #8d7550;
+  --neutral-500: #63553e;
+  --neutral-700: #2d281f;
+  --neutral-900: #12110d;
+
+  --primary-50: #fcf6e8;
+  --primary-100: #f7e7bf;
+  --primary-300: #d9b25b;
+  --primary-500: #b68a2b;
+  --primary-600: #9a7422;
+  --primary-700: #775917;
+
+  --success-50: #edf7ef;
+  --success-700: #2c6b43;
+
+  --danger-50: #fcf0ee;
+  --danger-100: #f4d8d3;
+  --danger-500: #c75d51;
+  --danger-600: #9f4339;
+
+  /* Semantic aliases */
+  --surface-page: linear-gradient(135deg, var(--neutral-50) 0%, #fdf9f1 100%);
+  --surface-card: rgba(252, 251, 248, 0.96);
+  --surface-hover: #f2e9d8;
+  --text-strong: var(--neutral-900);
+  --text-body: var(--neutral-700);
+  --text-muted: var(--neutral-500);
+  --text-subtle: var(--neutral-400);
+  --text-on-primary: var(--neutral-0);
+  --border-subtle: var(--neutral-200);
+  --border-default: var(--neutral-300);
+  --border-focus: var(--primary-500);
+  --action-primary: var(--primary-500);
+  --action-primary-hover: var(--primary-600);
+
+  /* Typography */
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --leading-snug: 1.25;
+  --leading-normal: 1.6;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /* Shape */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --shadow-sm: 0 12px 30px rgba(18, 17, 13, 0.08), 0 3px 8px rgba(18, 17, 13, 0.04);
+  --shadow-md: 0 20px 44px rgba(18, 17, 13, 0.12), 0 8px 20px rgba(18, 17, 13, 0.08);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.2, 0, 0.1, 1);
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+
+  /* Focus ring */
+  --ring: 0 0 0 3px color-mix(in srgb, var(--primary-500) 28%, transparent);
+}
+
+/* ---- Base layer ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  color: var(--text-body);
+  background: var(--surface-page);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 var(--space-4) 0;
+  color: var(--text-strong);
+  line-height: var(--leading-snug);
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}
