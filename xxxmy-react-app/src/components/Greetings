@@ -1,0 +1,8 @@
+function Greeting({ name = "Guest", message = "Hello!" }) {
+  return <h1>{message} {name}</h1>
+}
+
+// Usage
+<Greeting />  // Shows: "Hello! Guest"
+<Greeting name="Alice" />  // Shows: "Hello! Alice"
+<Greeting name="Bob" message="Welcome," />  // Shows: "Welcome, Bob"

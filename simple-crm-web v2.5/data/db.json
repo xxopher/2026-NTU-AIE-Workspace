@@ -1,0 +1,46 @@
+{
+  "customers": [
+    {
+      "id": "c3",
+      "firstName": "Nurul",
+      "lastName": "Huda",
+      "email": "nurul.huda@email.com",
+      "phone": "+65 9345 6789",
+      "status": "inactive",
+      "tags": [],
+      "company": "Gov Agency",
+      "notes": "",
+      "createdAt": "2024-01-20"
+    },
+    {
+      "id": "c4",
+      "firstName": "Marcus",
+      "lastName": "Lim",
+      "email": "marcus.lim@email.com",
+      "phone": "+65 9456 7890",
+      "status": "active",
+      "tags": [
+        "Lead",
+        "VIP"
+      ],
+      "company": "RetailX Pte Ltd",
+      "notes": "High-value account. Has requested a custom SLA.",
+      "createdAt": "2023-11-05"
+    },
+    {
+      "id": "c5",
+      "firstName": "Wei Ling",
+      "lastName": "Goh",
+      "email": "weiling.goh@email.com",
+      "phone": "+65 9567 8901",
+      "status": "active",
+      "tags": [
+        "Referral"
+      ],
+      "company": "HealthTech SG",
+      "notes": "Referred by Sarah Chen.",
+      "createdAt": "2024-08-19"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
