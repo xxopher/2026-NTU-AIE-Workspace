@@ -83,3 +83,8 @@ In accordance with the assignment guidelines, AI assistance was utilized as foll
   - Debugging React Router route matching and file export/import mismatches.
   - Structuring standard component hierarchy (`context`, `reducer`, `pages`, `components`).
 - **Understanding:** All generated code patterns (Context creation, destructuring context values, dynamic parameter lookup with `useParams()`) were thoroughly reviewed and understood.
+
+## Screenshots
+<img width="838" height="721" alt="image" src="https://github.com/user-attachments/assets/2e1c371f-961c-4430-a7cb-5a6f822cde31" />
+<img width="1689" height="743" alt="image" src="https://github.com/user-attachments/assets/48e95f5f-612d-4827-999f-8fdf6596b7cc" />
+
