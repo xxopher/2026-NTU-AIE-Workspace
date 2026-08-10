@@ -70,9 +70,9 @@ export default function TaskListPage() {
 
   function getStatusBadgeStyle(status) {
     const palette = {
-      todo: { bg: '#e8f1ff', text: '#1f4aa0' },
-      'in-progress': { bg: '#fff4dc', text: '#8a5a00' },
-      done: { bg: '#e6f8ec', text: '#1d6f3a' }
+      todo: { bg: '#65e7ff', text: '#0f2e6e' },
+      'in-progress': { bg: '#ffbf5f', text: '#5c3600' },
+      done: { bg: '#7bf0a9', text: '#0c4a2a' }
     };
 
     const colors = palette[status] || { bg: '#efefef', text: '#333333' };
@@ -95,9 +95,9 @@ export default function TaskListPage() {
 
   function getPriorityBadgeStyle(priority) {
     const palette = {
-      high: { bg: '#fde8e8', text: '#9b1c1c' },
-      medium: { bg: '#fff4dc', text: '#8a5a00' },
-      low: { bg: '#e9f7ef', text: '#1f7a45' }
+      high: { bg: '#ff89cb', text: '#5c0940' },
+      medium: { bg: '#ffd447', text: '#5f4a00' },
+      low: { bg: '#a9f7d0', text: '#095c37' }
     };
 
     const colors = palette[priority] || { bg: '#efefef', text: '#333333' };
@@ -120,25 +120,25 @@ export default function TaskListPage() {
 
   function getFilterChipStyle(type, value, isActive) {
     const statusPalette = {
-      todo: { bg: '#e8f1ff', text: '#1f4aa0' },
-      'in-progress': { bg: '#fff4dc', text: '#8a5a00' },
-      done: { bg: '#e6f8ec', text: '#1d6f3a' }
+      todo: { bg: '#65e7ff', text: '#0f2e6e' },
+      'in-progress': { bg: '#ffbf5f', text: '#5c3600' },
+      done: { bg: '#7bf0a9', text: '#0c4a2a' }
     };
     const priorityPalette = {
-      high: { bg: '#fde8e8', text: '#9b1c1c' },
-      medium: { bg: '#fff4dc', text: '#8a5a00' },
-      low: { bg: '#e9f7ef', text: '#1f7a45' }
+      high: { bg: '#ff89cb', text: '#5c0940' },
+      medium: { bg: '#ffd447', text: '#5f4a00' },
+      low: { bg: '#a9f7d0', text: '#095c37' }
     };
 
-    const allColors = { bg: '#f2f2f2', text: '#555555' };
+    const allColors = { bg: '#ced8ff', text: '#21306e' };
     const palette = type === 'status' ? statusPalette : priorityPalette;
     const colors = value === 'all' ? allColors : (palette[value] || allColors);
 
     if (!isActive) {
       return {
-        backgroundColor: '#ffffff',
-        color: '#666666',
-        border: '1px solid #cfcfcf',
+        backgroundColor: '#152066',
+        color: '#bfd0ff',
+        border: '1px solid #3856d8',
         borderRadius: '999px',
         padding: '0.08rem 0.32rem',
         fontSize: '0.64rem',
@@ -181,12 +181,12 @@ export default function TaskListPage() {
         }}
       >
         <h2 style={{ margin: 0 }}>Task List</h2>
-        <span style={{ fontSize: '0.88rem', color: '#666' }}>
+        <span style={{ fontSize: '0.88rem', color: '#a9baf0' }}>
           ({filteredTasks.length} of {tasks.length} tasks)
         </span>
       </div>
 
-      <p id="reorder-help" style={{ fontSize: '0.78rem', color: '#666', fontStyle: 'italic' }}>
+      <p id="reorder-help" style={{ fontSize: '0.78rem', color: '#a9baf0', fontStyle: 'italic' }}>
         *Reorder tasks by dragging a row, or use the up and down buttons for keyboard control.*
       </p>
 
@@ -195,7 +195,7 @@ export default function TaskListPage() {
       {/* Filter Bar */}
       <div style={{ marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#666', minWidth: '3.8rem', textAlign: 'left' }}>
+          <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#a9baf0', minWidth: '3.8rem', textAlign: 'left' }}>
             Status
           </span>
           {['all', 'todo', 'in-progress', 'done'].map((status) => (
@@ -209,7 +209,7 @@ export default function TaskListPage() {
           ))}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#666', minWidth: '3.8rem', textAlign: 'left' }}>
+          <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#a9baf0', minWidth: '3.8rem', textAlign: 'left' }}>
             Priority
           </span>
           {['all', 'low', 'medium', 'high'].map((priority) => (
@@ -237,11 +237,11 @@ export default function TaskListPage() {
             aria-label={`Task ${task.title}. Draggable item ${index + 1} of ${filteredTasks.length}.`}
             style={{
               marginBottom: '0.75rem',
-              backgroundColor: dragIndex === index ? '#f4f4f4' : '#ffffff',
+              backgroundColor: dragIndex === index ? '#1a2373' : '#101856',
               padding: '0.7rem 0.8rem',
               borderRadius: '10px',
-              border: '1px solid #d6d6d6',
-              boxShadow: dragIndex === index ? '0 2px 8px rgba(0, 0, 0, 0.12)' : '0 1px 3px rgba(0, 0, 0, 0.08)',
+              border: '1px solid #3c57dc',
+              boxShadow: dragIndex === index ? '0 5px 14px rgba(0, 0, 0, 0.35)' : '0 3px 8px rgba(0, 0, 0, 0.28)',
               cursor: dragIndex === index ? 'grabbing' : 'grab',
               display: 'flex',
               alignItems: 'center',
@@ -267,7 +267,7 @@ export default function TaskListPage() {
               ↓
             </button>
             <span
-              style={{ marginRight: '0.6rem', color: '#666' }}
+              style={{ marginRight: '0.6rem', color: '#8ea8ff' }}
               title="Drag to reorder"
               aria-hidden="true"
             >
@@ -275,13 +275,13 @@ export default function TaskListPage() {
             </span>
 
             <Link to={`/tasks/${task.id}`}>
-              <strong style={{ fontSize: '0.94rem' }}>{task.title}</strong>
+              <strong style={{ fontSize: '0.94rem', color: '#ffe27a' }}>{task.title}</strong>
             </Link>{' '}
             <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '0.32rem' }}>
               <span style={getStatusBadgeStyle(task.status)}>{task.status}</span>
               <span style={getPriorityBadgeStyle(task.priority)}>{task.priority}</span>
               <button
-                style={{ marginLeft: '0.45rem', cursor: 'pointer' }}
+                style={{ marginLeft: '0.45rem', cursor: 'pointer', padding: '0.22rem 0.55rem' }}
                 onClick={() => dispatch({ type: 'DELETE_TASK', payload: task.id })}
               >
                 Delete

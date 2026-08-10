@@ -42,9 +42,11 @@ export default function AddTaskForm({ onReset }) {
       onSubmit={handleSubmit}
       style={{
         marginBottom: '2rem',
-        border: '1px solid #ccc',
+        border: '1px solid #3f5cd8',
+        background: 'linear-gradient(180deg, #0e1550 0%, #090f3a 100%)',
+        boxShadow: '0 14px 30px rgba(0, 0, 0, 0.35)',
         padding: '1rem',
-        borderRadius: '8px'
+        borderRadius: '14px'
       }}
     >
       <h3>Add New Task</h3>
@@ -55,7 +57,7 @@ export default function AddTaskForm({ onReset }) {
           placeholder="Task Title *"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          style={{ width: '100%', padding: '0.4rem', boxSizing: 'border-box' }}
+          style={{ width: '100%', padding: '0.52rem 0.62rem', boxSizing: 'border-box' }}
         />
       </div>
 
@@ -64,12 +66,12 @@ export default function AddTaskForm({ onReset }) {
           placeholder="Task Description *"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          style={{ width: '100%', padding: '0.4rem', boxSizing: 'border-box' }}
+          style={{ width: '100%', padding: '0.52rem 0.62rem', boxSizing: 'border-box' }}
         />
       </div>
 
       <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
-        <label>
+        <label style={{ color: '#c8d8ff' }}>
           Status:{' '}
           <select value={status} onChange={(e) => setStatus(e.target.value)}>
             <option value="todo">To Do</option>
@@ -78,7 +80,7 @@ export default function AddTaskForm({ onReset }) {
           </select>
         </label>
 
-        <label>
+        <label style={{ color: '#c8d8ff' }}>
           Priority:{' '}
           <select value={priority} onChange={(e) => setPriority(e.target.value)}>
             <option value="low">Low</option>
@@ -94,6 +96,10 @@ export default function AddTaskForm({ onReset }) {
           disabled={isFormInvalid}
           style={{
             padding: '0.4rem 0.8rem',
+            backgroundColor: '#ffd447',
+            borderColor: '#ffd447',
+            color: '#161616',
+            fontWeight: 700,
             cursor: isFormInvalid ? 'not-allowed' : 'pointer'
           }}
         >
@@ -102,7 +108,14 @@ export default function AddTaskForm({ onReset }) {
         <button
           type="button"
           onClick={onReset}
-          style={{ padding: '0.4rem 0.8rem', cursor: 'pointer' }}
+          style={{
+            padding: '0.4rem 0.8rem',
+            backgroundColor: '#ffd447',
+            borderColor: '#ffd447',
+            color: '#161616',
+            fontWeight: 700,
+            cursor: 'pointer'
+          }}
         >
           Reset Defaults
         </button>
