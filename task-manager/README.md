@@ -77,7 +77,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed (v18 or higher recom
 
 In accordance with the assignment guidelines, AI assistance was utilized as follows:
 
-- **Tools Used:** ChatGPT / Claude / Copilot *(specify which one you used)*
+- **Tools Used:** Copilot
 - **Purpose:**
   - Guidance on setting up `useReducer` action types and maintaining immutability.
   - Debugging React Router route matching and file export/import mismatches.
