@@ -77,9 +77,15 @@ Make sure you have [Node.js](https://nodejs.org/) installed (v18 or higher recom
 
 In accordance with the assignment guidelines, AI assistance was utilized as follows:
 
-- **Tools Used:** ChatGPT / Claude / Copilot *(specify which one you used)*
+- **Tools Used:** Copilot
 - **Purpose:**
   - Guidance on setting up `useReducer` action types and maintaining immutability.
   - Debugging React Router route matching and file export/import mismatches.
   - Structuring standard component hierarchy (`context`, `reducer`, `pages`, `components`).
 - **Understanding:** All generated code patterns (Context creation, destructuring context values, dynamic parameter lookup with `useParams()`) were thoroughly reviewed and understood.
+
+## Screenshots
+<img width="722" height="1187" alt="image" src="https://github.com/user-attachments/assets/daba53b3-85f5-472b-98a9-f57a6f6c30e4" />
+<img width="909" height="475" alt="image" src="https://github.com/user-attachments/assets/bae81217-8658-45ec-9586-5ee7d71e0ee7" />
+
+
