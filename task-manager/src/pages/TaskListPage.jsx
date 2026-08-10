@@ -5,12 +5,13 @@ import AddTaskForm from '../components/AddTaskForm';
 
 export default function TaskListPage() {
   const { state, dispatch } = useTasks();
-  const { tasks, filter } = state;
+  const { tasks, filter, priorityFilter } = state;
   const [dragIndex, setDragIndex] = useState(null);
 
   const filteredTasks = tasks.filter((task) => {
-    if (filter === 'all') return true;
-    return task.status === filter;
+    const matchesStatus = filter === 'all' || task.status === filter;
+    const matchesPriority = priorityFilter === 'all' || task.priority === priorityFilter;
+    return matchesStatus && matchesPriority;
   });
 
   function reorderWithinFiltered(fromIndex, toIndex) {
@@ -117,40 +118,111 @@ export default function TaskListPage() {
     };
   }
 
+  function getFilterChipStyle(type, value, isActive) {
+    const statusPalette = {
+      todo: { bg: '#e8f1ff', text: '#1f4aa0' },
+      'in-progress': { bg: '#fff4dc', text: '#8a5a00' },
+      done: { bg: '#e6f8ec', text: '#1d6f3a' }
+    };
+    const priorityPalette = {
+      high: { bg: '#fde8e8', text: '#9b1c1c' },
+      medium: { bg: '#fff4dc', text: '#8a5a00' },
+      low: { bg: '#e9f7ef', text: '#1f7a45' }
+    };
+
+    const allColors = { bg: '#f2f2f2', text: '#555555' };
+    const palette = type === 'status' ? statusPalette : priorityPalette;
+    const colors = value === 'all' ? allColors : (palette[value] || allColors);
+
+    if (!isActive) {
+      return {
+        backgroundColor: '#ffffff',
+        color: '#666666',
+        border: '1px solid #cfcfcf',
+        borderRadius: '999px',
+        padding: '0.08rem 0.32rem',
+        fontSize: '0.64rem',
+        fontWeight: 500,
+        lineHeight: 1.05,
+        cursor: 'pointer',
+        textTransform: 'capitalize'
+      };
+    }
+
+    return {
+      backgroundColor: colors.bg,
+      color: colors.text,
+      border: `1px solid ${colors.text}33`,
+      borderRadius: '999px',
+      padding: '0.08rem 0.32rem',
+      fontSize: '0.64rem',
+      fontWeight: 600,
+      lineHeight: 1.05,
+      cursor: 'pointer',
+      textTransform: 'capitalize'
+    };
+  }
+
   return (
     <div>
-      <h2>Task List</h2>
-      <AddTaskForm />
+      <AddTaskForm onReset={resetTasks} />
 
-      {/* Filter Bar */}
-      <div style={{ marginBottom: '1rem', display: 'flex', gap: '0.5rem' }}>
-        {['all', 'todo', 'in-progress', 'done'].map((status) => (
-          <button
-            key={status}
-            onClick={() => dispatch({ type: 'SET_FILTER', payload: status })}
-            style={{
-              fontWeight: filter === status ? 'bold' : 'normal',
-              textTransform: 'capitalize',
-              padding: '0.4rem 0.8rem',
-              cursor: 'pointer'
-            }}
-          >
-            {status}
-          </button>
-        ))}
-        <button
-          type="button"
-          onClick={resetTasks}
-          style={{ padding: '0.4rem 0.8rem', cursor: 'pointer' }}
-        >
-          Reset Defaults
-        </button>
+      <br />
+      <br />
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-start',
+          alignItems: 'baseline',
+          gap: '0.45rem',
+          marginBottom: '0.25rem',
+          width: '100%'
+        }}
+      >
+        <h2 style={{ margin: 0 }}>Task List</h2>
+        <span style={{ fontSize: '0.88rem', color: '#666' }}>
+          ({filteredTasks.length} of {tasks.length} tasks)
+        </span>
       </div>
 
-      <p>Showing {filteredTasks.length} of {tasks.length} tasks</p>
-      <p id="reorder-help" style={{ fontSize: '0.9rem', color: '#666' }}>
-        Reorder tasks by dragging a row, or use the up and down buttons for keyboard control.
+      <p id="reorder-help" style={{ fontSize: '0.78rem', color: '#666', fontStyle: 'italic' }}>
+        *Reorder tasks by dragging a row, or use the up and down buttons for keyboard control.*
       </p>
+
+      <br />
+
+      {/* Filter Bar */}
+      <div style={{ marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#666', minWidth: '3.8rem', textAlign: 'left' }}>
+            Status
+          </span>
+          {['all', 'todo', 'in-progress', 'done'].map((status) => (
+            <button
+              key={status}
+              onClick={() => dispatch({ type: 'SET_FILTER', payload: status })}
+              style={getFilterChipStyle('status', status, filter === status)}
+            >
+              {status}
+            </button>
+          ))}
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#666', minWidth: '3.8rem', textAlign: 'left' }}>
+            Priority
+          </span>
+          {['all', 'low', 'medium', 'high'].map((priority) => (
+            <button
+              key={priority}
+              onClick={() => dispatch({ type: 'SET_PRIORITY_FILTER', payload: priority })}
+              style={getFilterChipStyle('priority', priority, priorityFilter === priority)}
+            >
+              {priority}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <ul aria-describedby="reorder-help">
         {filteredTasks.map((task, index) => (

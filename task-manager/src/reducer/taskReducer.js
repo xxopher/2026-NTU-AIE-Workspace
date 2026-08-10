@@ -56,6 +56,7 @@ export const initialState = {
   }
   ],
   filter: 'all',
+  priorityFilter: 'all',
 };
 
 // 2. Task Reducer Function
@@ -77,6 +78,12 @@ export function taskReducer(state, action) {
       return {
         ...state,
         filter: action.payload
+      };
+
+    case 'SET_PRIORITY_FILTER':
+      return {
+        ...state,
+        priorityFilter: action.payload
       };
 
     case 'REORDER_TASKS':

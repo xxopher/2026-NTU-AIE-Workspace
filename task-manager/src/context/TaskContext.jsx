@@ -27,7 +27,8 @@ function initTaskState(baseState) {
       return {
         ...baseState,
         tasks: parsed.tasks,
-        filter: parsed.filter
+        filter: parsed.filter,
+        priorityFilter: typeof parsed.priorityFilter === 'string' ? parsed.priorityFilter : baseState.priorityFilter
       };
     }
 
@@ -48,12 +49,12 @@ export function TaskProvider({ children }) {
     try {
       localStorage.setItem(
         TASKS_STORAGE_KEY,
-        JSON.stringify({ tasks: state.tasks, filter: state.filter })
+        JSON.stringify({ tasks: state.tasks, filter: state.filter, priorityFilter: state.priorityFilter })
       );
     } catch {
       // ignore storage failures
     }
-  }, [state.tasks, state.filter]);
+  }, [state.tasks, state.filter, state.priorityFilter]);
 
   return (
     <TaskContext.Provider value={{ state, dispatch }}>

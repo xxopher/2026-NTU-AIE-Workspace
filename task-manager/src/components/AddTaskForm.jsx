@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTasks } from '../context/TaskContext';
 
-export default function AddTaskForm() {
+export default function AddTaskForm({ onReset }) {
   const { dispatch } = useTasks();
 
   // 1. Controlled component local state
@@ -88,9 +88,25 @@ export default function AddTaskForm() {
         </label>
       </div>
 
-      <button type="submit" disabled={isFormInvalid} style={{ cursor: isFormInvalid ? 'not-allowed' : 'pointer' }}>
-        Add Task
-      </button>
+      <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-start' }}>
+        <button
+          type="submit"
+          disabled={isFormInvalid}
+          style={{
+            padding: '0.4rem 0.8rem',
+            cursor: isFormInvalid ? 'not-allowed' : 'pointer'
+          }}
+        >
+          Add Task
+        </button>
+        <button
+          type="button"
+          onClick={onReset}
+          style={{ padding: '0.4rem 0.8rem', cursor: 'pointer' }}
+        >
+          Reset Defaults
+        </button>
+      </div>
     </form>
   );
 }
