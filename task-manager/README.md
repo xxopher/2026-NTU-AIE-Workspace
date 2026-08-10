@@ -85,6 +85,7 @@ In accordance with the assignment guidelines, AI assistance was utilized as foll
 - **Understanding:** All generated code patterns (Context creation, destructuring context values, dynamic parameter lookup with `useParams()`) were thoroughly reviewed and understood.
 
 ## Screenshots
-<img width="838" height="721" alt="image" src="https://github.com/user-attachments/assets/2e1c371f-961c-4430-a7cb-5a6f822cde31" />
-<img width="1689" height="743" alt="image" src="https://github.com/user-attachments/assets/48e95f5f-612d-4827-999f-8fdf6596b7cc" />
+<img width="722" height="1187" alt="image" src="https://github.com/user-attachments/assets/daba53b3-85f5-472b-98a9-f57a6f6c30e4" />
+<img width="909" height="475" alt="image" src="https://github.com/user-attachments/assets/bae81217-8658-45ec-9586-5ee7d71e0ee7" />
+
 
