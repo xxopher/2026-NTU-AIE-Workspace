@@ -67,6 +67,56 @@ export default function TaskListPage() {
     setDragIndex(null);
   }
 
+  function getStatusBadgeStyle(status) {
+    const palette = {
+      todo: { bg: '#e8f1ff', text: '#1f4aa0' },
+      'in-progress': { bg: '#fff4dc', text: '#8a5a00' },
+      done: { bg: '#e6f8ec', text: '#1d6f3a' }
+    };
+
+    const colors = palette[status] || { bg: '#efefef', text: '#333333' };
+    return {
+      backgroundColor: colors.bg,
+      color: colors.text,
+      border: `1px solid ${colors.text}33`,
+      borderRadius: '999px',
+      padding: '0.08rem 0.32rem',
+      fontSize: '0.64rem',
+      fontWeight: 600,
+      lineHeight: 1.05,
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
+      textTransform: 'capitalize'
+    };
+  }
+
+  function getPriorityBadgeStyle(priority) {
+    const palette = {
+      high: { bg: '#fde8e8', text: '#9b1c1c' },
+      medium: { bg: '#fff4dc', text: '#8a5a00' },
+      low: { bg: '#e9f7ef', text: '#1f7a45' }
+    };
+
+    const colors = palette[priority] || { bg: '#efefef', text: '#333333' };
+    return {
+      backgroundColor: colors.bg,
+      color: colors.text,
+      border: `1px solid ${colors.text}33`,
+      borderRadius: '999px',
+      padding: '0.08rem 0.32rem',
+      fontSize: '0.64rem',
+      fontWeight: 600,
+      lineHeight: 1.05,
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
+      textTransform: 'capitalize'
+    };
+  }
+
   return (
     <div>
       <h2>Task List</h2>
@@ -153,15 +203,18 @@ export default function TaskListPage() {
             </span>
 
             <Link to={`/tasks/${task.id}`}>
-              <strong>{task.title}</strong>
+              <strong style={{ fontSize: '0.94rem' }}>{task.title}</strong>
             </Link>{' '}
-            — <span>{task.status}</span> ({task.priority})
-            <button
-              style={{ marginLeft: '1rem', cursor: 'pointer' }}
-              onClick={() => dispatch({ type: 'DELETE_TASK', payload: task.id })}
-            >
-              Delete
-            </button>
+            <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '0.32rem' }}>
+              <span style={getStatusBadgeStyle(task.status)}>{task.status}</span>
+              <span style={getPriorityBadgeStyle(task.priority)}>{task.priority}</span>
+              <button
+                style={{ marginLeft: '0.45rem', cursor: 'pointer' }}
+                onClick={() => dispatch({ type: 'DELETE_TASK', payload: task.id })}
+              >
+                Delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>
