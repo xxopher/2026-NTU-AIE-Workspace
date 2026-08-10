@@ -79,6 +79,18 @@ export function taskReducer(state, action) {
         filter: action.payload
       };
 
+    case 'REORDER_TASKS':
+      return {
+        ...state,
+        tasks: action.payload
+      };
+
+    case 'RESET_TASKS':
+      return {
+        ...state,
+        tasks: initialState.tasks.map((task) => ({ ...task }))
+      };
+
     default:
       return state;
   }
